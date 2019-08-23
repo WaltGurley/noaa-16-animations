@@ -23,9 +23,21 @@ export default {
   .video-panel {
     width: 98%;
   }
+}
 
-  .video {
-    width: 100%;
+@media screen and (min-width: 426px) {
+  .video-panel {
+    width: 50%;
   }
+}
+
+@media screen and (min-width: 769px) {
+  .video-panel {
+    width: 33%;
+  }
+}
+
+.video {
+  width: 100%;
 }
 </style>
