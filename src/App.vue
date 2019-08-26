@@ -6,10 +6,12 @@
     </header>
     <main class="video-container">
       <VideoPanel
-        v-for="n in testNum"
-        videoSrc="http://52.54.73.208/temp.mp4"
-        :videoId="n"
-        :key="n"
+        ref="videoPanel"
+        v-for="video in videos"
+        :videoSrc="video.source"
+        :videoId="video.title"
+        :key="video.title"
+        @video-ready-to-play="syncPlayOnAllLoad"
       />
     </main>
   </div>
@@ -23,13 +25,33 @@ export default {
   components: {
     VideoPanel
   },
-  data () {
+  data() {
     return {
-      testNum: [1, 2, 3]
-    }
+      videos: [
+        {
+          title: "test 1",
+          source: "http://52.54.73.208/temp.mp4"
+        },
+        {
+          title: "test 2",
+          source: "http://52.54.73.208/temp.mp4"
+        },
+        {
+          title: "test 3",
+          source: "http://52.54.73.208/temp.mp4"
+        }
+      ],
+      videoLoadedCount: 0
+    };
   },
   methods: {
-
+    // This function starts 'synchronous' play of videos once all are loaded
+    syncPlayOnAllLoad: function() {
+      this.videoLoadedCount++;
+      if (this.videoLoadedCount === this.videos.length) {
+        this.$refs.videoPanel.map(e => e.$refs.video.play());
+      }
+    }
   }
 };
 </script>
@@ -47,6 +69,7 @@ export default {
 .video-container {
   display: flex;
   align-content: center;
+  justify-content: space-between;
   flex-direction: row;
   flex-wrap: wrap;
 }

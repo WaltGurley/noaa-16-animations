@@ -1,5 +1,7 @@
 # noaa-16-animations
 
+Built with Vue.js
+
 ## Project setup
 ```
 npm install
