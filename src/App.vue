@@ -10,6 +10,7 @@
         v-for="video in videos"
         :videoSrc="video.source"
         :videoId="video.title"
+        :videoInfo="video.info"
         :key="video.title"
         @video-ready-to-play="syncPlayOnAllLoad"
       />
@@ -30,15 +31,18 @@ export default {
       videos: [
         {
           title: "test 1",
-          source: "http://52.54.73.208/temp.mp4"
+          source: "http://52.54.73.208/temp.mp4",
+          info: "This is test source 1. It shows some cool satellite data"
         },
         {
           title: "test 2",
-          source: "http://52.54.73.208/temp.mp4"
+          source: "http://52.54.73.208/temp.mp4",
+          info: "This is test source 2. It shows some cool satellite data"
         },
         {
           title: "test 3",
-          source: "http://52.54.73.208/temp.mp4"
+          source: "http://52.54.73.208/temp.mp4",
+          info: "This is test source 3. It shows some cool satellite data"
         }
       ],
       videoLoadedCount: 0

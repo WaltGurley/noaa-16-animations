@@ -1,6 +1,7 @@
 <template>
   <div class="video-panel">
     <h3>Source {{ videoId }}</h3>
+    <p>{{  videoInfo }}</p>
     <video
       class="video"
       muted="true"
@@ -19,7 +20,8 @@ export default {
   name: "VideoPanel",
   props: {
     videoSrc: String,
-    videoId: String
+    videoId: String,
+    videoInfo: String
   },
   methods: {}
 };
