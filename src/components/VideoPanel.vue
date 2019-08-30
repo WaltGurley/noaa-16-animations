@@ -10,7 +10,7 @@
       ref="video"
       @canplaythrough="$emit('video-ready-to-play')"
     >
-      <source :src="videoSrc" type="video/mp4" />
+      <source :src="videoUrl" type="video/mp4" />
     </video>
   </div>
 </template>
@@ -19,7 +19,7 @@
 export default {
   name: "VideoPanel",
   props: {
-    videoSrc: String,
+    videoUrl: String,
     videoId: String,
     videoInfo: String
   },
@@ -29,6 +29,16 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.video-panel {
+  border-radius: 6px;
+  box-shadow: 0 0 4px #aaa;
+  padding: 1px;
+}
+
+.video {
+  width: 100%;
+}
+
 @media screen and (max-width: 425px) {
   .video-panel {
     width: 100%;
@@ -47,13 +57,18 @@ export default {
   }
 }
 
-.video-panel {
-  border-radius: 6px;
-  box-shadow: 0 0 4px #aaa;
-  padding: 1px;
-}
+@media screen and (min-width: 2880px) {
+  .video-panel {
+    width: 18%;
+    border-radius: 24px;
+    box-shadow: 0 0 36px #aaa;
+    background-color: #ffffff;
+    color: #2c3e50;
+  }
 
-.video {
-  width: 100%;
+  .video {
+    width: 100%;
+    border-radius: 24px;
+  }
 }
 </style>
